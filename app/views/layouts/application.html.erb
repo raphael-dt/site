@@ -32,11 +32,11 @@
               <span class="caret"></span>
               <ul class="dropdown-menu" role="menu">
                 <li><%= link_to "Mon profil", profil_path%></li>
-                <li><%= link_to "se deconnecter", destroy_session_path, data: {method: :delete} %></li>
+                <li><%= link_to "se deconnecter", destroy_session_path, data: {turbo_method: :delete} %></li>
               </ul>
             </li>
              <li><%= link_to "Mon profil", profil_path, class: "navbar-brand"%></li>
-            <li><%= link_to "se deconnecter", destroy_session_path, data: {method: :delete}, class: "navbar-brand" %></li>
+            <li><%= link_to "se deconnecter", destroy_session_path, data: {turbo_method: :delete}, class: "navbar-brand" %></li>
           <% else%>
               <li><a href="<%=new_user_path%>" class="navbar-brand">S'inscrire</a></li>
               <li><a href="<%=new_session_path%>" class="navbar-brand">Se connecter</a></li>
