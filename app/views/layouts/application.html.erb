@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blog</title>
+    <%= javascript_importmap_tags %>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
+    
+    
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="<%=root_path%>" class="navbar-brand">route des articles</a>  
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+          <% if user_signed_in?%>
+            <li class="dropdown">
+              <a href="" class="dropdown-toggle" data_toggle="dropdown" role="button" aria-expanded="true">
+                <%=current_user.name %>
+              </a>
+              <span class="caret"></span>
+              <ul class="dropdown-menu" role="menu">
+                <li><%= link_to "Mon profil", profil_path%></li>
+                <li><%= link_to "se deconnecter", destroy_session_path, data: {method: :delete} %></li>
+              </ul>
+            </li>
+             <li><%= link_to "Mon profil", profil_path, class: "navbar-brand"%></li>
+            <li><%= link_to "se deconnecter", destroy_session_path, data: {method: :delete}, class: "navbar-brand" %></li>
+          <% else%>
+              <li><a href="<%=new_user_path%>" class="navbar-brand">S'inscrire</a></li>
+              <li><a href="<%=new_session_path%>" class="navbar-brand">Se connecter</a></li>
+          <%end%>
+        </ul>
+      </div>
+    </div>
+  
+  
+    <div class="container" style="...">
+      <% flash.each do |name, msg| %>
+        <div class="alert alert-<%=name%>"><%=msg%></div>
+      <% end%>
+    </div>
+    <%= yield %>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+<% if @user.errors.any?%>
+    <div class="alert alert-danger">
+        <ul>
+            <% @user.errors.full_message.each do |message| %>
+                <li><%=message%></li>
+            <%end%>
+        </ul>
+    </div>
+<% end %>
+<<div class="panel panel-default">
+    <div class="panel-header">Se connecter</div>
+    <div class="panel-body">
+        <%=render "form", user: @user%>
+    </div>
+</div>
+     

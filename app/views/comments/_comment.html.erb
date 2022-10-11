@@ -1,0 +1,5 @@
+<% unless comment.archived?%>
+    <h4> <%=comment.commenter%></h4>
+    <p><%= comment.body%></p>
+    <%= link_to "Supprimer", [comment.article, comment], data: {turbo_method: :delete, turbo_confirm: "etes vous sur?"} %>
+<%end%>

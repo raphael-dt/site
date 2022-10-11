@@ -1,0 +1,18 @@
+<div class="container">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th><th>Nom</th><th>Supprimer</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @user.each do |user|%>
+                <tr>
+                    <td><%=user.id%></td>
+                    <td><%=user.id%></td>
+                    <td><%=link_to "editer", edit_user_path(user)%></td>
+                </tr>
+            <%end%>
+        </tbody>
+    </table>
+</div>
