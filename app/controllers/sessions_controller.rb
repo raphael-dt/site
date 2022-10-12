@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   skip_before_action :only_signed_in
-  before_action :user_signed_out, except: :destroy
+  before_action :only_signed_out, except: :destroy
   def new
     @user=User.new
   end
@@ -25,4 +25,5 @@ class SessionsController < ApplicationController
     params.require(:user)
 
   end
+  
 end

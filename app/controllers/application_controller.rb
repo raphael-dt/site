@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
     def user_signed_in?
         !current_user.nil?
     end
-    def user_signed_out
+    def only_signed_out
         if !current_user.nil?
             redirect_to root_path, danger: "vous êtes déjà connecté"
         end

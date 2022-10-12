@@ -23,6 +23,13 @@
         <div class="navbar-header">
           <a href="<%=root_path%>" class="navbar-brand">route des articles</a>  
         </div>
+      <% if isAdmin%>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="navbar-brand">administrateur</li>
+            <li class="navbar-brand"><%= link_to "User", show_user_path%></li>
+          </ul>
+        <%end%>  
+
         <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in?%>
             <li class="dropdown">
