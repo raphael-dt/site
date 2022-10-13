@@ -36,6 +36,15 @@ class ArticlesController < ApplicationController
       render :edit, status: :unprocessable_entity
     end
   end
+  def archived
+    @article =Article.find(params[:id])
+    if @article.update(status: 'archived')
+      redirect_to @article, success: "l'article a bien été archivée"
+    else
+      redirect_to @article, danger: "une erreur s'est produite veuillez rééssayer"
+    end
+  end
+  
 
   def destroy
     @article=Article.find(params[:id])

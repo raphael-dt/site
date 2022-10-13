@@ -3,19 +3,20 @@ Rails.application.routes.draw do
   get 'sessions/create'
   get 'sessions/destroy'
   root "articles#index"
-  
+  get '/article/:id/archived', to: "articles#archived", as: :archived_article
   get '/profil', to: "users#edit", as: :profil
   patch '/profil', to: "users#update"
 
   get '/login', to: "sessions#new", as: :new_session
   post '/login', to: "sessions#create"
+  
   delete '/logout', to: "sessions#destroy", as: :destroy_session
   resources :articles do
     resources:comments
   end
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
-  scope 'admin', module: 'admin', as 'admin' do:
+  #scope 'admin', module: 'admin', as 'admin'
     
   
   

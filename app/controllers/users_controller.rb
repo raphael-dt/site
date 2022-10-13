@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     def update
         @user=current_user
         if @user.update(users_params)
-            redirect_to root_path, success: "la modificaiton a bien marché"
+            extern redirect_to root_path, success: "la modificaiton a bien marché"
         else
             render danger: "veuillez rééssayer"
         end
@@ -33,7 +33,9 @@ class UsersController < ApplicationController
         @user=User.all
     end
     
-    
+    def show
+
+    end
 
     private
     def check
@@ -42,7 +44,7 @@ class UsersController < ApplicationController
         end
     end
     def users_params
-        params.require(:user).permit(:name, :password, :password_confirmation)
+        params.require(:user).permit(:name, :password, :password_confirmation, :role)
 
     end
     
