@@ -1,10 +1,10 @@
 module Admin
-    class UserController < ApplicationController
+    class UsersController < ApplicationController
         def index
-            @user=Users.all
+            @user=User.all
         end
         def destroy
-            @user= Users.find(params[:id])
+            @user= User.find(params[:id])
             @user.destroy
             redirect_to _path, sucess: "l'utilisateur a été supprimé"
         end
