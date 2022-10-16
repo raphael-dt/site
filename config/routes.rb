@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'sessions/destroy'
   root "articles#index"
   get '/article/:id/archived', to: "articles#archived", as: :archived_article
+  get '/article/:id/activate', to: "articles#activate", as: :activate_article
   get '/profil', to: "users#edit", as: :profil
   patch '/profil', to: "users#update"
 

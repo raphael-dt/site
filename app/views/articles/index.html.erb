@@ -2,9 +2,12 @@
 Le truc a <%=Article.public_count%> articles public continuons ainsi
 <ul>
     <% @article.each do |article| %>
-        <% unless article.archived?%>
+        <% if canShow(article)%>
             <li>
                 <%= link_to article.title, article %>
+                <% if current_user!='extern'%>
+                    <%= article.status%>
+                <%end%>
             </li>
         <% end %>
     <% end %>

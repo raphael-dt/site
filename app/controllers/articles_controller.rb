@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  http_basic_authenticate_with name: "admin", password: "admin", except: [:index, :show]
+  before_action :only_editor, except: [:index, :show]
   skip_before_action :only_signed_in, only: :index
   def index
     @article =Article.all
@@ -44,6 +44,14 @@ class ArticlesController < ApplicationController
       redirect_to @article, danger: "une erreur s'est produite veuillez rééssayer"
     end
   end
+  def activate
+    @article =Article.find(params[:id])
+    if @article.update(status: 'public')
+      redirect_to @article, success: "l'article a bien été activé"
+    else
+      redirect_to @article, danger: "une erreur s'est produite veuillez rééssayer"
+    end
+  end
   
 
   def destroy
@@ -58,4 +66,10 @@ class ArticlesController < ApplicationController
     def article_params
       params.require(:article).permit(:title, :body, :status)
     end
+    def only_editor
+      if !user_signed_in? || !(current_user.role = 'editor' || current_user.role = 'admin')
+          redirect_to root_path, danger: "veuillez vous connecter ou vous inscrire pour accéder à cette page"
+      end
+  end
+    
 end
