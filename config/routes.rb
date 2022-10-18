@@ -18,9 +18,9 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   scope 'admin', module: 'admin', as: 'admin' do
     resources :users, only: :index
-    get '/passeditor/:id', to: "users#passeditor", as: :passeditor_users
-    get '/passextern/:id', to: "users#passextern", as: :passextern_users
-    delete '/destroy', to: "users#destroy", as: :destroy_users
+    get 'users/passeditor/:id', to: "users#passeditor", as: :passeditor_users
+    get 'users/passextern/:id', to: "users#passextern", as: :passextern_users
+    delete 'users/:id/destroy', to: "users#destroy", as: :destroy_users
     
   end
 

@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     def update
         @user=current_user
         if @user.update(users_params)
-            extern redirect_to root_path, success: "la modificaiton a bien marché"
+            redirect_to root_path, success: "la modificaiton a bien marché"
         else
             render danger: "veuillez rééssayer"
         end
