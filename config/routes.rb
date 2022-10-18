@@ -17,10 +17,11 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   scope 'admin', module: 'admin', as: 'admin' do
-    resources :users, only: :index  do
-      post '/passeditor/:id', to: "users#passeditor", as: :passeditor
-      post '/passextern/:id', to: "users#passextern", as: :passextern
-    end
+    resources :users, only: :index
+    get '/passeditor/:id', to: "users#passeditor", as: :passeditor_users
+    get '/passextern/:id', to: "users#passextern", as: :passextern_users
+    delete '/destroy', to: "users#destroy", as: :destroy_users
+    
   end
 
     

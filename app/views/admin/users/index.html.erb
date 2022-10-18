@@ -11,11 +11,17 @@
                 <td><%=user.name%></td>
                 <td><%= user.role%></td>
                 <% if user.role==='extern'%>
-                    <td><%= link_to "Editor", :root_path, class: "btn btn-warning", data: {turbo_method: :post, turbo_confirm: "Etes vous sur de le passer éditeur"}%></td>
+                    <td><%= link_to "Editor", admin_passeditor_users_path(user.id), class: "btn btn-warning", data: {turbo_method: :post, turbo_confirm: "Etes vous sur de le passer éditeur"}%></td>
+                <%elsif user.role==='admin' %>
+                    <td>Admin</td>
                 <% else%>
-                    <td><%= link_to "Externe", :root_path, class: "btn btn-info", data: {turbo_method: :post, turbo_confirm: "Etes vous sur de le passer externe"}%></td>
+                    <td><%= link_to "Externe", admin_passeditor_users_path(user.id), class: "btn btn-info", data: {turbo_method: :post, turbo_confirm: "Etes vous sur de le passer externe"}%></td>
                 <%end%>
-                <td><%= link_to "supprimer", :delete_user_path(user), data: {turbo_method: :delete, turbo_confirm: "Etes vous sur de le supprimer"} %></td>
+                <% if user.role==='admin'%>
+                    <td></td>
+                <%else%>
+                    <td><%= link_to "supprimer",  admin_destroy_users_path(user.id), data: {turbo_method: :delete, turbo_confirm: "Etes vous sur de le supprimer"} %></td>
+                <%end%>
             </tr>
         <%end%>
     </table>
