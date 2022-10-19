@@ -18,7 +18,8 @@ module Admin
         end
         def passeditor
             @user=User.find(params[:id])
-            if @user.update(role: 'editor')
+            @user.role='editor'
+            if @user.save
                 redirect_to admin_users_path, sucess: "l'utilisateur est devenu un editeur"
             else
                 redirect_to admin_users_path, danger: "Echec, veuillez rééssayer"

@@ -11,7 +11,7 @@
                 <td><%=user.name%></td>
                 <td><%= user.role%></td>
                 <% if user.role==='extern'%>
-                    <td><%=button_to "Editeur", action: passeditor(user.id), method: :patch, class: "btn btn_warning", data: {turbo_confirm: "Etes vous sur de le passer éditeur?"} %></td>
+                    <td><%=link_to "Editeur", admin_passeditor_users_path(user.id), method: :patch, class: "btn btn-warning", data: {turbo_confirm: "Etes vous sur de le passer éditeur?"} %></td>
                 <%elsif user.role==='admin' %>
                     <td>Admin</td>
                 <% else%>
