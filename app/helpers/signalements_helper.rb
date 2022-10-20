@@ -1,0 +1,2 @@
+module SignalementsHelper
+end

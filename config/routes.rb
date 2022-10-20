@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get '/show'
+    get '/index'
+    get '/create'
+    get '/new'
+    get '/update'
+    get '/edit'
+    get '/destroy'
+  end
+  get 'signalements/new'
   get 'sessions/new'
   get 'sessions/create'
   get 'sessions/destroy'
@@ -22,6 +32,9 @@ Rails.application.routes.draw do
     get 'users/passextern/:id', to: "users#passextern", as: :passextern_users
     delete 'users/:id/destroy', to: "users#destroy", as: :destroy_users
     
+    get 'signalements/resolve'
+    get 'signalements/show'
+    get 'signalements/index'
   end
 
     
