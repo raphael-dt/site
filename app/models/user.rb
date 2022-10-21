@@ -1,6 +1,6 @@
 class User < ApplicationRecord
     validates :name, presence: true, uniqueness: {case_sensitive: false}
-    has_many :roles 
+       
     VALID_ROLE= ['extern', 'editor', 'admin']
     validates :role, inclusion: {in: VALID_ROLE}
     has_secure_password
