@@ -17,16 +17,55 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_12_183203) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "status"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
   create_table "comments", force: :cascade do |t|
-    t.string "commenter"
+    t.string "title"
     t.text "body"
     t.integer "article_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "status"
+    t.integer "user_id"
     t.index ["article_id"], name: "index_comments_on_article_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "roles", id: false, force: :cascade do |t|
+    t.integer "users_id"
+    t.string "role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["users_id"], name: "index_roles_on_users_id"
+  end
+
+  create_table "signalements", force: :cascade do |t|
+    t.integer "users_id"
+    t.integer "comments_id"
+    t.string "cause"
+    t.boolean "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["comments_id"], name: "index_signalements_on_comments_id"
+    t.index ["users_id"], name: "index_signalements_on_users_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.string "class"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tags_articles", id: false, force: :cascade do |t|
+    t.integer "articles_id"
+    t.integer "tags_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["articles_id"], name: "index_tags_articles_on_articles_id"
+    t.index ["tags_id"], name: "index_tags_articles_on_tags_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -34,8 +73,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_12_183203) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "role", default: "extern"
-    t.string "password_salt"
   end
 
   add_foreign_key "comments", "articles"
