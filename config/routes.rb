@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   get 'sessions/new'
   get 'sessions/create'
   get 'sessions/destroy'
@@ -14,15 +15,22 @@ Rails.application.routes.draw do
   resources :articles do
     resources:comments
   end
+  resources :signalements, only: [:new, :create]
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   scope 'admin', module: 'admin', as: 'admin' do
     resources :users, only: :index
     get 'users/passeditor/:id', to: "users#passeditor", as: :passeditor_users
     get 'users/passextern/:id', to: "users#passextern", as: :passextern_users
-    delete 'users/:id/destroy', to: "users#destroy", as: :destroy_users
-    
+    delete 'users/:id/destroy', to: "users#destroy", as: :destroy_users 
   end
+  scope 'editor', module: 'editor', as: 'editor' do
+    resources :tags
+    ressouces :articles, only: [:new, :create, :destroy]
+    get '/article/:id/archived', to: "articles#archived", as: :archived_article
+    get '/article/:id/actived', to: "articles#actived", as: :actived_articles
+  end
+ 
 
     
   
