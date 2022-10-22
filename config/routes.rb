@@ -12,8 +12,8 @@ Rails.application.routes.draw do
   post '/login', to: "sessions#create"
   
   delete '/logout', to: "sessions#destroy", as: :destroy_session
-  resources :articles do
-    resources:comments
+  resources :articles, only: [:show, :index] do
+    resources :comments
   end
   resources :signalements, only: [:new, :create]
   resources :users
@@ -26,8 +26,8 @@ Rails.application.routes.draw do
   end
   scope 'editor', module: 'editor', as: 'editor' do
     resources :tags
-    ressouces :articles, only: [:new, :create, :destroy]
-    get '/article/:id/archived', to: "articles#archived", as: :archived_article
+    ressouces :articles, except: [:index, :show]
+    get '/article/:id/archived', to: "articles#archived", as: :archived_articles
     get '/article/:id/actived', to: "articles#actived", as: :actived_articles
   end
  
