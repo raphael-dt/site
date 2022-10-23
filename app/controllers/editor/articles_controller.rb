@@ -49,6 +49,10 @@ class Editor::ArticlesController < ApplicationController
     end
     private
     def article_params
-      params.require(:article).permit(:title, :body, :status)
+      article_value=params.require(:article).permit(:title, :body, :status)
+      if article_value[:user].nil?
+        article_value[:user]=session[:auth]['id']
+      end
+      return article_value
     end
 end

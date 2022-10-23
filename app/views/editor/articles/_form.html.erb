@@ -1,4 +1,4 @@
-<%= form_with model: @article do |form| %>
+<%= form_with model: @article, action: route do |form| %>
     <div>
         <%= form.label :title %><br>
         <%= form.text_field :title %>
