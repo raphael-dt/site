@@ -34,22 +34,22 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_12_183203) do
   end
 
   create_table "roles", id: false, force: :cascade do |t|
-    t.integer "users_id"
-    t.string "role"
+    t.integer "user_id"
+    t.string "right"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["users_id"], name: "index_roles_on_users_id"
+    t.index ["user_id"], name: "index_roles_on_user_id"
   end
 
   create_table "signalements", force: :cascade do |t|
-    t.integer "users_id"
-    t.integer "comments_id"
+    t.integer "user_id"
+    t.integer "comment_id"
     t.string "cause"
     t.boolean "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["comments_id"], name: "index_signalements_on_comments_id"
-    t.index ["users_id"], name: "index_signalements_on_users_id"
+    t.index ["comment_id"], name: "index_signalements_on_comment_id"
+    t.index ["user_id"], name: "index_signalements_on_user_id"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -60,12 +60,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_12_183203) do
   end
 
   create_table "tags_articles", id: false, force: :cascade do |t|
-    t.integer "articles_id"
-    t.integer "tags_id"
+    t.integer "article_id"
+    t.integer "tag_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["articles_id"], name: "index_tags_articles_on_articles_id"
-    t.index ["tags_id"], name: "index_tags_articles_on_tags_id"
+    t.index ["article_id"], name: "index_tags_articles_on_article_id"
+    t.index ["tag_id"], name: "index_tags_articles_on_tag_id"
   end
 
   create_table "users", force: :cascade do |t|

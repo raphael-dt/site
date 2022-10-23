@@ -1,4 +1,4 @@
 class Tag < ApplicationRecord
     validates :name, presence: true
-    has_and_belongs_to_many :tags_articles
+    has_and_belongs_to_many :tags_article
 end

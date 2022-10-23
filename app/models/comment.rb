@@ -1,6 +1,6 @@
 class Comment < ApplicationRecord
   include Visible
-  belongs_to :users
+  belongs_to :user
   belongs_to :article
   has_many :signalements
   validates :commenter, presence: true

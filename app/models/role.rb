@@ -1,5 +1,5 @@
 class Role < ApplicationRecord
-    belongs_to :users
+    belongs_to :user
     VALID_ROLES= ['extern', 'editor', 'admin']
-    validates :roles, inclusion: {in: VALID_ROLES}
+    validates :right, inclusion: {in: VALID_ROLES}
 end
