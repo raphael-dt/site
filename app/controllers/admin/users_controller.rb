@@ -10,15 +10,7 @@ module Admin
         end
         def passeditor
             @user=User.find(params[:id])
-            if @user.update(role: 'editor')
-                redirect_to admin_users_path, sucess: "l'utilisateur est devenu un editeur"
-            else
-                redirect_to admin_users_path, danger: "Echec, veuillez rééssayer"
-            end
-        end
-        def passeditor
-            @user=User.find(params[:id])
-            if @user.update_column(role: 'editor')
+            if @user.role.replace(role: 'editor')
                 redirect_to admin_users_path, sucess: "l'utilisateur est devenu un editeur"
             else
                 redirect_to admin_users_path, danger: "Echec, veuillez rééssayer"
@@ -26,15 +18,11 @@ module Admin
         end
         def passextern
             @user=User.find(params[:id])
-            if @user.update_column(role: 'extern')
+            if @user.role.replace(role: 'extern')
                 redirect_to admin_users_path, sucess: "l'utilisateur est devenu un externe"
             else
                 redirect_to admin_users_path, danger: "Echec, veuillez rééssayer"
             end
         end
-
-
-        
-
     end
 end

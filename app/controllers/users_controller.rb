@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     end
     def create
         @user=User.new(users_params)
+        @user.role.create(role: 'extern')
         if @user.valid?
             @user.save
             session[:auth]={id: @user.id}
