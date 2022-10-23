@@ -10,20 +10,20 @@ class AddRoleToUsers < ActiveRecord::Migration[7.0]
       t.timestamps
     end
     create_table :signalements do |t|
-      t.belongs_to :users 
-      t.belongs_to :comments
+      t.belongs_to :user
+      t.belongs_to :comment
       t.string :cause
       t.boolean :status
       t.timestamps
     end
     create_table :roles , id: false do |t|
-      t.belongs_to :users
-      t.string :role
+      t.belongs_to :user
+      t.string :right
       t.timestamps
     end
     create_table :tags_articles, id: false do |t|
-      t.belongs_to :articles
-      t.belongs_to :tags
+      t.belongs_to :article
+      t.belongs_to :tag
       t.timestamps
     end
   end
