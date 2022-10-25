@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     end
     def create
         @user=User.new(users_params)
+        @user.role.create(role: 'extern')
         if @user.valid?
             @user.save
             session[:auth]={id: @user.id}
@@ -33,7 +34,9 @@ class UsersController < ApplicationController
         @user=User.all
     end
     
-    
+    def show
+
+    end
 
     private
     def check
@@ -42,7 +45,7 @@ class UsersController < ApplicationController
         end
     end
     def users_params
-        params.require(:user).permit(:name, :password, :password_confirmation)
+        params.require(:user).permit(:name, :password, :password_confirmation, :role)
 
     end
     

@@ -1,0 +1,2 @@
+module Editor::TagsHelper
+end

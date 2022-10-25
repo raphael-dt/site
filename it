@@ -1,0 +1,23 @@
+[33mcommit 1175f6e75f2d9c4acbff402955e73a783e99a8e6[m[33m ([m[1;36mHEAD -> [m[1;32madmin[m[33m, [m[1;31morigin/admin[m[33m)[m
+Author: raphael <raphael.daubaire.a2sup@gmail.com>
+Date:   Wed Oct 12 21:26:06 2022 +0200
+
+    create folder admin and scope route
+
+[33mcommit c310dee97ccd9806b2cf085ea65477a45fcff29e[m
+Author: raphael <raphael.daubaire.a2sup@gmail.com>
+Date:   Wed Oct 12 21:11:58 2022 +0200
+
+    create role and begin modification
+
+[33mcommit 5357fefa949d9e7e146110f6d0c34e9a58532e37[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m
+Author: raphael <raphael.daubaire.a2sup@gmail.com>
+Date:   Tue Oct 11 21:03:44 2022 +0200
+
+    resolve logout disfunction
+
+[33mcommit f3c66a71eeb4646bdec6503ae8edbc0916bf8637[m
+Author: raphael <raphael.daubaire.a2sup@gmail.com>
+Date:   Tue Oct 11 20:47:20 2022 +0200
+
+    commit initial

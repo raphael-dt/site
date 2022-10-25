@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
     helper_method :current_user, :user_signed_in?
     private
     def only_signed_in
-        if !current_user
+        if !user_signed_in?
             redirect_to root_path, danger: "veuillez vous connecter ou vous inscrire pour accéder à cette page"
         end
     end
@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
     def user_signed_in?
         !current_user.nil?
     end
-    def user_signed_out
+    def only_signed_out
         if !current_user.nil?
             redirect_to root_path, danger: "vous êtes déjà connecté"
         end

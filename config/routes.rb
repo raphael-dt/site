@@ -1,20 +1,39 @@
 Rails.application.routes.draw do
+  
   get 'sessions/new'
   get 'sessions/create'
   get 'sessions/destroy'
   root "articles#index"
-  
+  get '/article/:id/archived', to: "articles#archived", as: :archived_article
   get '/profil', to: "users#edit", as: :profil
   patch '/profil', to: "users#update"
 
   get '/login', to: "sessions#new", as: :new_session
   post '/login', to: "sessions#create"
+  
   delete '/logout', to: "sessions#destroy", as: :destroy_session
-  resources :articles do
-    resources:comments
+  resources :articles, only: [:show, :index] do
+    resources :comments
   end
+  resources :signalements, only: [:new, :create]
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
+  scope 'admin', module: 'admin', as: 'admin' do
+    resources :users, only: :index
+    get 'users/passeditor/:id', to: "users#passeditor", as: :passeditor_users
+    get 'users/passextern/:id', to: "users#passextern", as: :passextern_users
+    delete 'users/:id/destroy', to: "users#destroy", as: :destroy_users 
+  end
+  scope 'editor', module: 'editor', as: 'editor' do
+    resources :tags
+    resources :articles, except: [:index, :show]
+    get '/article/:id/archived', to: "articles#archived", as: :archived_articles
+    get '/article/:id/actived', to: "articles#actived", as: :actived_articles
+  end
+ 
+
+    
+  
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
