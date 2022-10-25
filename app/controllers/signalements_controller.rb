@@ -1,6 +1,7 @@
 class SignalementsController < ApplicationController
   def new
     @signalements= Signalement.new
+    @comment=Comment.find(params[:id])
   end
 
   def create
@@ -8,6 +9,7 @@ class SignalementsController < ApplicationController
     @signalements=@comment.signalement.create(params, user: session[:auth]['id'])
     if @signalement.save
       redirect_to article_path(@comment.article), sucess: "Votre signalement a bien été enregistrer nous allons bientot traiter votre demande."
+    end
   end
   private
   def signalement_params
