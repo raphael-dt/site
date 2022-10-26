@@ -1,7 +1,7 @@
 class SignalementsController < ApplicationController
   def new
     @signalements= Signalement.new
-    @comment=Comment.find(params[:id])
+    @comment=Comment.find(params[:comment])
   end
 
   def create

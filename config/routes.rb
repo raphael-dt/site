@@ -15,7 +15,8 @@ Rails.application.routes.draw do
   resources :articles, only: [:show, :index] do
     resources :comments
   end
-  resources :signalements, only: [:new, :create]
+  get '/signalements/new/:comment', to: "signalements#new", as: :new_signalements
+  post '/signalement', to: "signalements#create"
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   scope 'admin', module: 'admin', as: 'admin' do
