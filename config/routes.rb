@@ -27,8 +27,8 @@ Rails.application.routes.draw do
   scope 'editor', module: 'editor', as: 'editor' do
     resources :tags
     resources :articles, except: [:index, :show]
-    get '/article/:id/archived', to: "articles#archived", as: :archived_articles
-    get '/article/:id/actived', to: "articles#actived", as: :actived_articles
+    get '/article/:id/archived', to: "articles#archived", as: :archived_article
+    get '/article/:id/actived', to: "articles#actived", as: :actived_article
   end
  
 

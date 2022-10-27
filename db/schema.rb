@@ -33,7 +33,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_12_183203) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "roles", id: false, force: :cascade do |t|
+  create_table "roles", force: :cascade do |t|
     t.integer "user_id"
     t.string "right"
     t.datetime "created_at", null: false
@@ -59,7 +59,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_12_183203) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "tags_articles", id: false, force: :cascade do |t|
+  create_table "tags_articles", force: :cascade do |t|
     t.integer "article_id"
     t.integer "tag_id"
     t.datetime "created_at", null: false

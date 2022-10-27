@@ -16,12 +16,12 @@ class AddRoleToUsers < ActiveRecord::Migration[7.0]
       t.boolean :status
       t.timestamps
     end
-    create_table :roles , id: false do |t|
+    create_table :roles  do |t|
       t.belongs_to :user
       t.string :right
       t.timestamps
     end
-    create_table :tags_articles, id: false do |t|
+    create_table :tags_articles do |t|
       t.belongs_to :article
       t.belongs_to :tag
       t.timestamps

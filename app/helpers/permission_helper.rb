@@ -7,14 +7,14 @@ module PermissionHelper
         end
     end
     def isEditor
-        if user_signed_in? && current_user.role === 'editor' || isAdmin
+        if user_signed_in? && current_user.role.right === 'editor' || isAdmin
             true
         else
             false
         end
     end
     def isAdmin
-        if user_signed_in? && current_user.role=== 'admin'
+        if user_signed_in? && current_user.role.right=== 'admin'
             true
         else
             false

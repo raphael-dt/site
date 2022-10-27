@@ -4,14 +4,14 @@
     <ul>
         <% if isEditor%>
             <li>
-                <%= link_to "modifier", editor_edit_articles_path(@article), class: "btn btn-default", type: "button" %>
+                <%= link_to "modifier", edit_editor_article_path(@article), class: "btn btn-default", type: "button" %>
             </li>
             <li>
-                <%= link_to "archiver", editor_archived_articles_path(@article), class: "btn btn-warning", type: "button"%>
+                <%= link_to "archiver", editor_archived_article_path(@article), class: "btn btn-warning", type: "button"%>
             </li>
         <% end%>
         <% if isAdmin%>
-            <li> <%= link_to "supprimer", editor_articles_path(@article), class: "btn btn-danger", data: {turbo_method: :delete, turbo_confirm: "Etes vous sur"}%>
+            <li> <%= link_to "supprimer", editor_article_path(@article), class: "btn btn-danger", data: {turbo_method: :delete, turbo_confirm: "Etes vous sur"}%>
         <%end%>
     </ul>
 </div>
