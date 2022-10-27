@@ -15,7 +15,8 @@ Rails.application.routes.draw do
   resources :articles, only: [:show, :index] do
     resources :comments
   end
-  resources :signalements, only: [:new, :create]
+  get '/signalements/new/:comment', to: "signalements#new", as: :new_signalements
+  post '/signalements', to: "signalements#create"
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   scope 'admin', module: 'admin', as: 'admin' do
@@ -23,6 +24,10 @@ Rails.application.routes.draw do
     get 'users/passeditor/:id', to: "users#passeditor", as: :passeditor_users
     get 'users/passextern/:id', to: "users#passextern", as: :passextern_users
     delete 'users/:id/destroy', to: "users#destroy", as: :destroy_users 
+    resources :signalements, only: [:show, :index, :destroy] do
+      resources :comments, only: [:destroy, :show]
+    end
+    get 'signalements/resolve/:id', to: "signalements#resolve", as: :resolve_signalement
   end
   scope 'editor', module: 'editor', as: 'editor' do
     resources :tags

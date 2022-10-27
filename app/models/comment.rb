@@ -3,7 +3,7 @@ class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :article
   has_many :signalements
-  validates :commenter, presence: true
+  validates :title, presence: true
   validates :body, presence: true, length: {minimum:4}
   
   
