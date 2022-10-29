@@ -1,8 +1,12 @@
-<%= form_with model: @signalement, url: signalements_path, html: {class: 'form-horizontal'} do |form| %>
+<h1>
+<%=@comment.title%>
+</h1>
+<p>
+<%=@comment.body%>
+<%= form_with url: signalements_path(@comment.id), html: {class: 'form-horizontal'} do |form| %>
     <div class="form-group">
        <%=form.label(:cause)%> <br>
         <%=form.text_field(:cause)%>
     </div>
-    <%= form.hidden_field :comments, value: @comment.id%>
-  <%= form.submit "Signaler", class:"btn btn-warning"%>
+    <%= form.submit "Signaler", class:"btn btn-warning"%>
 <%end%>
