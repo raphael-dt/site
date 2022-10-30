@@ -1,0 +1,21 @@
+<div class="container">
+    <table class="table table-strip">
+        <tr>
+            <th>Cause</th>
+            <th>Utilisateur</th>
+            <th>Titre du commentaire</th>
+            <th>Voir</th>
+            <th>Supprimer</th>
+        </tr>
+        <% @signalement.each do |signalement|%>
+            
+            <tr>
+                <td><%=signalement.cause%></td>
+                <td><%= signalement.user.name%></td>
+                <td><%= signalement.comment.title%></td>
+                <td><%=link_to "Voir", admin_signalement_path(signalement.comment.id), class: "btn btn-warning"%></td>
+                <td><%= link_to "supprimer",  admin_signalement_path(signalement.id), data: {turbo_method: :delete, turbo_confirm: "Etes vous sur de le supprimer"} %></td>
+            </tr>
+        <%end%>
+    </table>
+</div>

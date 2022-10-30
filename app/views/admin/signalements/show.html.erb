@@ -1,0 +1,22 @@
+<div class="container">
+    <%=@comment.title%>
+    <%=@comment.user.name%>
+    <%=@comment.body%>
+<div class="container">
+    <table class="table table-strip">
+        <tr>
+            <th>Cause</th>
+            <th>Utilisateur</th>
+        </tr>
+        <% @signalement.each do |signalement|%>
+            <tr>
+                <td><%=signalement.cause%></td>
+                <td><%= signalement.user.name%></td>
+            </tr>
+        <%end%>
+    </table>
+</div>
+<div class="container">
+    <td><%=link_to "Ignorer le signalement", admin_resolve_signalement_path(@comment.id), class: "btn btn-warning", data: {turbo_confirm: "Etes vous sur d'ingnorer les signalemnts"}%>
+    <td><%=link_to "Supprimer le commentaire", admin_resolve_signalement_path(@comment.id), class: "btn btn-danger", data: {turbo_confirm: "Etes vous sur supprimer le commentaire"}%>
+</div>

@@ -4,8 +4,8 @@ module Admin
             @signalement=Signalement.all
         end
         def show
-            @signalement=Signalement.find(params[:id])
-            @comment=Comment.find(@signalement.comment)
+            @comment=Comment.find(params[:id])
+            @signalement=@comment.signalement
         end
         def destroy
             @signalement=Signalement.find(params(:id))
@@ -16,13 +16,14 @@ module Admin
             end
         end
         def resolve
-            @signalement=Signalement.find(params[:id])
-            @signalement.satus='resolve'
-            @signalement.update(@signalement)
-            if @signalement.save
+            @comment=Comment.find(params[:id])
+            @comment.signalement.status='resolve'
+            @comment.update()
+            if @comment.save
                 redirect_to admin_signalement_path, sucess: "Le signalement a bien été résolu"
             else
                 redirect_to admin_signalement_path, danger: "la résolution a échoué"
             end
+        end
     end
 end

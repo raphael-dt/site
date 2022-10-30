@@ -24,9 +24,7 @@ Rails.application.routes.draw do
     get 'users/passeditor/:id', to: "users#passeditor", as: :passeditor_users
     get 'users/passextern/:id', to: "users#passextern", as: :passextern_users
     delete 'users/:id/destroy', to: "users#destroy", as: :destroy_users 
-    resources :signalements, only: [:show, :index, :destroy] do
-      resources :comments, only: [:destroy, :show]
-    end
+    resources :signalements, only: [:show, :index, :destroy]
     get 'signalements/resolve/:id', to: "signalements#resolve", as: :resolve_signalement
   end
   scope 'editor', module: 'editor', as: 'editor' do
