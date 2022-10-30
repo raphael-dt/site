@@ -1,6 +1,6 @@
 class Signalement < ApplicationRecord
-    validates :users, presence: true
-    validates :comments, presence: true
+    validates :user_id, presence: true
+    validates :comment_id, presence: true
     belongs_to :comment
     belongs_to :user
 end

@@ -13,7 +13,8 @@ class SignalementsController < ApplicationController
   end
   private
   def signalement_params(comment)
-    params_return=params.require(:signalement).permit(:cause)
+    params_return=params
+    params_return['cause']=params['cause']
     params_return['user_id']= session[:auth]['id']
     params_return['comment_id']= comment
     return params_return    
