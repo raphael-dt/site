@@ -9,7 +9,7 @@
         </tr>
         <% @signalement.each do |signalement|%>
             
-            <tr>
+            <tr class="<%=color(signalement)%>">
                 <td><%=signalement.cause%></td>
                 <td><%= signalement.user.name%></td>
                 <td><%= signalement.comment.title%></td>
