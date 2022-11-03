@@ -17,6 +17,6 @@
     </table>
 </div>
 <div class="container">
-    <td><%=link_to "Ignorer le signalement", admin_resolve_signalement_path(resolve_route(@comment.id, 'anything')), class: "btn btn-warning", data: {turbo_confirm: "Etes vous sur d'ingnorer les signalemnts"}%>
-    <td><%=link_to "Supprimer le commentaire", admin_resolve_signalement_path(resolve_route(@comment.id, 'comment')), class: "btn btn-danger", data: {turbo_confirm: "Etes vous sur supprimer le commentaire"}%>
+    <td><%=button_to "Ignorer le signalement", admin_resolve_signalement_path(@comment.id), params: {action: 'anything'}, method: :post,  class: "btn btn-warning", data: {turbo_confirm: "Etes vous sur d'ingnorer les signalemnts"}%>
+    <td><%=button_to "Supprimer le commentaire", admin_resolve_signalement_path(@comment.id), params: {action: 'comment'}, method: "post", class: "btn btn-danger", data: {turbo_confirm: "Etes vous sur supprimer le commentaire"}%>
 </div>
